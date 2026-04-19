@@ -4,31 +4,35 @@
 #include "Classes.h"
 
 struct InevitableFate {
-    // The Kingdom Crawler: Increments age and health decay for all realm members
-    void updateLordsDaily(Kingdom** realms, int realmCount);
+    void updateLordsDaily(Kingdom** realms, int countofrealms, Kingdom** rebels, int countofrebels);
 
-    // Succession Logic: Promotes the most ambitious local courtier to the throne
     void resolveSuccession(Kingdom* realm);
 
-    // Tension Logic: Calculates daily stability shifts based on realm state
-    void updateTensionDaily(Kingdom** realms, int realmCount);
 
-    // Phase 3b: Plot Logic: Accumulates assassination progress for courtiers
-    void updatePlotsDaily(Kingdom** realms, int realmCount, int relations[10][10]);
+    void updateTensionDaily(Kingdom** realms, int countofrealms, Kingdom** rebels, int countofrebels);
 
-    // Phase 3b: Internal Coup: Executes a plotter's strike against their own lord
-    void resolveInternalCoup(Kingdom* realm, LandlessLord* plotter, int relations[10][10]);
+    void updatePlotsDaily(Kingdom** realms, int countofrealms, int** relations, Kingdom** rebels, int countofrebels);
 
-    // Phase 3c: Foreign Strike: Executes hired assassins against rival realm lords
-    void resolveForeignStrike(Kingdom** realms, Assassin** assassins, int& aCount, int relations[10][10]);
+
+    void resolveInternalCoup(Kingdom* realm, LandlessLord* plotter, int** relations, int countofrealms);
+
+
+    void resolveForeignStrike(Kingdom** realms, int countofrealms, Assassin** assassins, int& aCount, int** relations);
 
 private:
-    // Manual summation of all unit references across all categories
+    
+
     int calculateTotalArmySize(Kingdom* realm);
 
-    // Internal helper to find the best candidate in a specific realm
-    // Returns a pointer to either a LandlessLord or a WarriorLord (via Noble base cast)
+
+
     Noble* findHighestAmbition(Kingdom* realm);
+
+    bool isBetterEntity(int ambitionA, int idA, const char* nameA, int realmA, int ambitionB, int idB, const char* nameB, int realmB);
+
+
 };
+
+
 
 #endif
