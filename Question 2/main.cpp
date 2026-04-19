@@ -2,9 +2,11 @@
 #include "string.h"
 #include <iostream>
 
+using namespace std;
 int main(int argc, char* argv[]) {
     if (argc < 2) {
-        std::cerr << "Usage: " << argv[0] << " <scenario_csv> [days]\n";
+        cerr << "Usage: " << argv[0] << " <scenario_csv> [days]\n";
+
         return 1;
     }
 

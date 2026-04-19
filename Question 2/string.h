@@ -4,7 +4,6 @@
 
 
 
-//---------------- String Engine ----------------
 inline int getLength(const char* str) {
     if(str == nullptr)  return 0;
     
@@ -323,14 +322,13 @@ inline char* rotateString(char* str, int k){
     return newstr;
 }
 
-inline int stoi(const char* str) {
+inline int  stoi(const char* str) {
     if (str == nullptr) return 0;
     
     int result = 0;
     int sign = 1;
     int i = 0;
 
-    // Skip leading whitespace if needed
     while (*(str + i) == ' ') i++;
 
     if (*(str + i) == '-') {
@@ -364,13 +362,11 @@ inline float stof(const char* str) {
         i++;
     }
 
-    // Integer part
     while (*(str + i) >= '0' && *(str + i) <= '9') {
         result = result * 10.0f + (*(str + i) - '0');
         i++;
     }
 
-    // Fractional part
     if (*(str + i) == '.') {
         i++;
         float factor = 0.1f;
