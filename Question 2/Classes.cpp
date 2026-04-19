@@ -24,8 +24,10 @@ void FrostPeaksKingdom::applyColdWeather() {
     if (cavalry[i])
       cavalry[i]->takedefaultDmg(coldAttritionModifier);
   for (int i = 0; i < countofwarriorlords; i++)
-    if (warriorLords[i])
-      warriorLords[i]->Knight::takedefaultDmg(coldAttritionModifier);
+    if (warriorLords[i]) {
+      Knight* kLord = (Knight*)warriorLords[i];
+      kLord->takedefaultDmg(coldAttritionModifier);
+    }
   for (int i = 0; i < countoframs; i++)
     if (rams[i])
       rams[i]->takedefaultDmg(coldAttritionModifier);
@@ -33,8 +35,10 @@ void FrostPeaksKingdom::applyColdWeather() {
     if (catapults[i])
       catapults[i]->takedefaultDmg(coldAttritionModifier);
   for (int i = 0; i < countofships; i++)
-    if (warShips[i])
-      warShips[i]->Transport::takedefaultDmg(coldAttritionModifier);
+    if (warShips[i]) {
+      Transport* tShip = (Transport*)warShips[i];
+      tShip->takedefaultDmg(coldAttritionModifier);
+    }
 }
 
 Kingdom::~Kingdom() {

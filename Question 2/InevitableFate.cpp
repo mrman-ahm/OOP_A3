@@ -1,5 +1,5 @@
 #include "InevitableFate.h"
-#include "string.h"
+#include "custom_string.h"
 
 void InevitableFate::updateLordsDaily(Kingdom** realms, int countofrealms, Kingdom** rebels, int countofrebels) {
     if (realms == nullptr) return;

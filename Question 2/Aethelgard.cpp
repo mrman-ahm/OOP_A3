@@ -1,5 +1,5 @@
 #include "Aethelgard.h"
-#include "string.h"
+#include "custom_string.h"
 #include "ScenarioLoader.h"
 #include <iostream>
 
@@ -308,6 +308,12 @@ void Aethelgard::removeTheDead() {
     for (int i = 0; i < countoflords; i++) {
 
         if (allthelords[i] && !allthelords[i]->isAliveSelf()) {
+            // Fix dangling currentLord pointer in Kingdom
+            int rIdx = allthelords[i]->realmIdx;
+            if (rIdx >= 0) {
+                Kingdom* k = (rIdx < countofrealms) ? realms[rIdx] : ((rIdx - countofrealms < countofrebels) ? therebellingfactions[rIdx - countofrealms] : nullptr);
+                if (k && k->currentLord == allthelords[i]) k->currentLord = nullptr;
+            }
             terminateLord(allthelords[i]);
             allthelords[i] = nullptr;
 
@@ -523,11 +529,11 @@ void Aethelgard::run(const char* csvPath, int days) {
 
                 int voidPower = voidRift->getThreatLevel() * 100;
 
-                std::cout << "\nDay " << currentDay << ": ###--ECLIPSE--### The Void Rift erupts! (Threat Power: " << voidPower << " vs Alliance Power: " << globalPower << ")\n";
+                std::cout << "\nDay " << currentDay << ": ###--ECLIPSE--### The Void Rift has erupted! (Threat Power: " << voidPower << " vs Alliance Power: " << globalPower << ")\n";
 
                 if (globalPower >= voidPower) {
 
-                    std::cout << "  ===>>>  Aethelgard miraculously repels the swarm... but suffers a catastrophic 60% flat casualty rate.\n";
+                    std::cout << "  ===>>>  Aethelgard was able to  repel the attack... but faces a 60%  casualty rate.\n";
 
                     for (int r = 0; r < countofrealms; r++) {
                         if (realms[r] && realms[r]->getTerrainCode() != 4) {
@@ -558,7 +564,7 @@ void Aethelgard::run(const char* csvPath, int days) {
                     }
                 } else {
 
-                    std::cout << "  ===>>> AETHELGARD IS CONSUMED. Absolute defeat.\n";
+                    std::cout << "  ===>>> AETHELGARD HAS BEEN CONSUMED. OMG an Absolute defeat.\n";
 
                 }
                 break;

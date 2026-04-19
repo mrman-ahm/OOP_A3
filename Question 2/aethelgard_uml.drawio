@@ -1,0 +1,426 @@
+<mxfile host="app.diagrams.net" agent="Antigravity">
+  <diagram id="AethelgardUML_Full" name="Page-1">
+    <mxGraphModel dx="638" dy="445" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="3300" pageHeight="2200" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="Aethelgard" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;collapsible=1;marginBottom=0;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" value="Aethelgard" vertex="1">
+          <mxGeometry height="780" width="300" x="100" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="Aeth_Fields" parent="Aethelgard" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;html=1;" value="- realms: Kingdom*[100]&#xa;- countofrealms: int&#xa;- therebellingfactions: Kingdom**&#xa;- countofrebels: int&#xa;- voidRift: TheVoidRift*&#xa;- relations: int**&#xa;- relationDimension: int&#xa;- allthelords: Noble**&#xa;- countoflords: int&#xa;- assassins: Assassin**&#xa;- assassinCount: int&#xa;- allFootSoldiers: FootSoldier**&#xa;- countoffootsoldiers: int&#xa;- allKnights: Knight**&#xa;- countofknights: int&#xa;- allCavalry: Cavalry**&#xa;- countofcavalry: int&#xa;- allRams: BatteringRam**&#xa;- countoframs: int&#xa;- allCatapults: Catapult**&#xa;- countofcatapults: int&#xa;- allWarShips: WarShip**&#xa;- countofships: int&#xa;- allWarriorLords: WarriorLord**&#xa;- countofwarriorlords: int&#xa;- fate: InevitableFate&#xa;- currentDay: int&#xa;- threatMax: int" vertex="1">
+          <mxGeometry height="400" width="300" y="26" as="geometry" />
+        </mxCell>
+        <mxCell id="Aeth_Sep" parent="Aethelgard" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=10;rotatable=0;labelPosition=left;points=[];portConstraint=eastwest;" value="" vertex="1">
+          <mxGeometry height="8" width="300" y="426" as="geometry" />
+        </mxCell>
+        <mxCell id="Aeth_Methods" parent="Aethelgard" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;html=1;" value="- doShadyStuff(): void&#xa;- makePeopleHateEachOther(): void&#xa;- handleTheFighting(): void&#xa;- removeTheDead(): void&#xa;- showWhatsHappening(): void&#xa;- makeARebellion(parentIdx: int): void&#xa;+ Aethelgard()&#xa;+ ~Aethelgard()&#xa;+ getRealm(idx: int): Kingdom*&#xa;+ addRealm(k: Kingdom*, idx: int): void&#xa;+ addLord(n: Noble*): void&#xa;+ addAssassin(a: Assassin*): void&#xa;+ keepTrackOfFoot(f: FootSoldier*): void&#xa;+ keepTrackOfKnights(k: Knight*): void&#xa;+ keepTrackOfCavalry(c: Cavalry*): void&#xa;+ keepTrackOfRams(r: BatteringRam*): void&#xa;+ keepTrackOfCatapults(ca: Catapult*): void&#xa;+ keepTrackOfShips(w: WarShip*): void&#xa;+ keepTrackOfWarriorLords(wl: WarriorLord*): void&#xa;+ setRelation(i: int, j: int, val: int): void&#xa;+ setThreatMax(t: int): void&#xa;+ setVoidRift(vr: TheVoidRift*): void&#xa;+ loadScenario(csvPath: const char*): bool&#xa;+ run(csvPath: const char*, days: int): void" vertex="1">
+          <mxGeometry height="340" width="300" y="434" as="geometry" />
+        </mxCell>
+        <mxCell id="InevitableFate" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;collapsible=1;marginBottom=0;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="&lt;&lt;struct&gt;&gt;&#xa;InevitableFate" vertex="1">
+          <mxGeometry height="185" width="350" x="450" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="Fate_Methods" parent="InevitableFate" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;html=1;" value="+ updateLordsDaily(realms: Kingdom**, ...): void&#xa;+ resolveSuccession(realm: Kingdom*): void&#xa;+ updateTensionDaily(realms: Kingdom**, ...): void&#xa;+ updatePlotsDaily(realms: Kingdom**, ...): void&#xa;+ resolveInternalCoup(realm: Kingdom*, ...): void&#xa;+ resolveForeignStrike(realms: Kingdom**, ...): void&#xa;- calculateTotalArmySize(realm: Kingdom*): int&#xa;- findHighestAmbition(realm: Kingdom*): Noble*&#xa;- isBetterEntity(...): bool" vertex="1">
+          <mxGeometry height="145" width="350" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="dep1" edge="1" parent="InevitableFate" style="edgeStyle=orthogonalEdgeStyle;dashed=1;endArrow=open;endSize=12;entryX=0.003;entryY=0.435;entryDx=0;entryDy=0;entryPerimeter=0;" target="War_Methods" value="creates">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="360" y="240" />
+              <mxPoint x="360" y="158" />
+            </Array>
+            <mxPoint x="-60" y="239.9999999999999" as="sourcePoint" />
+            <mxPoint x="390" y="159.9999999999999" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="WarHours" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;collapsible=1;marginBottom=0;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="&lt;&lt;struct&gt;&gt;&#xa;WarHours" vertex="1">
+          <mxGeometry height="320" width="320" x="850" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="War_Fields" parent="WarHours" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;html=1;" value="+ attacker: Kingdom*&#xa;+ defender: Kingdom*&#xa;+ presentHour: int" vertex="1">
+          <mxGeometry height="50" width="320" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="War_Sep" parent="WarHours" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=10;rotatable=0;labelPosition=left;points=[];portConstraint=eastwest;" value="" vertex="1">
+          <mxGeometry height="8" width="320" y="90" as="geometry" />
+        </mxCell>
+        <mxCell id="War_Methods" parent="WarHours" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;html=1;" value="+ WarHours(atk: Kingdom*, def: Kingdom*)&#xa;+ figureOutWhoWins(): int&#xa;+ doPostWarStuff(...): void&#xa;- killTheUnits(target: Kingdom*, incomingDamage: int): void&#xa;- generateLineDamage(k: Kingdom*, strategyMod: float): int&#xa;- getFootSoldiersTotalHP(k: Kingdom*): int&#xa;- generateHealing(k: Kingdom*, dmg: int): int&#xa;- calculateTotalPower(k: Kingdom*): int&#xa;- generateSiegeDamage(k: Kingdom*, strategyMod: float): int&#xa;- generatePhaseDamage(k: Kingdom*, mod: float, phase: int): int&#xa;- getStrategyModifier(k: Kingdom*): float&#xa;- applyNavalAttrition(target: Kingdom*): void&#xa;- generateFlankDamage(k: Kingdom*, strategyMod: float): int&#xa;- generateEliteDamage(k: Kingdom*, strategyMod: float): int" vertex="1">
+          <mxGeometry height="220" width="320" y="98" as="geometry" />
+        </mxCell>
+        <mxCell id="ScenarioLoader" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;collapsible=1;marginBottom=0;html=1;fillColor=#f5f5f5;strokeColor=#666666;" value="ScenarioLoader" vertex="1">
+          <mxGeometry height="70" width="280" x="1220" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="Scen_Methods" parent="ScenarioLoader" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;html=1;" value="+ {static} load(csvPath: const char*, engine: Aethelgard*): bool" vertex="1">
+          <mxGeometry height="44" width="280" y="26" as="geometry" />
+        </mxCell>
+        <mxCell id="Entity" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;collapsible=1;marginBottom=0;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" value="Entity" vertex="1">
+          <mxGeometry height="100" width="400" x="1180" y="300" as="geometry" />
+        </mxCell>
+        <mxCell id="Entity_Fields" parent="Entity" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;html=1;" value="# name: char*&#xa;# id: int" vertex="1">
+          <mxGeometry height="74" width="200" y="26" as="geometry" />
+        </mxCell>
+        <mxCell id="Entity_Methods" parent="Entity" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;html=1;" value="+ Entity(n: const char*, i: int)&#xa;+ ~Entity()&#xa;+ getName(): const char*&#xa;+ getID(): int" vertex="1">
+          <mxGeometry height="74" width="200" x="200" y="26" as="geometry" />
+        </mxCell>
+        <mxCell id="Person" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;collapsible=1;marginBottom=0;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" value="Person" vertex="1">
+          <mxGeometry height="110" width="200" x="850" y="450" as="geometry" />
+        </mxCell>
+        <mxCell id="Per_Fields" parent="Person" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;html=1;" value="# isAlive: bool&#xa;# age: int" vertex="1">
+          <mxGeometry height="34" width="200" y="26" as="geometry" />
+        </mxCell>
+        <mxCell id="Per_Sep" parent="Person" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=10;rotatable=0;labelPosition=left;points=[];portConstraint=eastwest;" value="" vertex="1">
+          <mxGeometry height="8" width="200" y="52" as="geometry" />
+        </mxCell>
+        <mxCell id="Per_Methods" parent="Person" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;html=1;" value="+ setAlive(alive: bool): void&#xa;+ isAliveSelf(): bool" vertex="1">
+          <mxGeometry height="40" width="200" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Asset" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;collapsible=1;marginBottom=0;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" value="Asset" vertex="1">
+          <mxGeometry height="160" width="220" x="1450" y="450" as="geometry" />
+        </mxCell>
+        <mxCell id="Asset_Fields" parent="Asset" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;html=1;" value="# maxHp: int&#xa;# hp: int&#xa;# maintenanceCost: int&#xa;# armor: int" vertex="1">
+          <mxGeometry height="66" width="220" y="26" as="geometry" />
+        </mxCell>
+        <mxCell id="Asset_Sep" parent="Asset" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=10;rotatable=0;labelPosition=left;points=[];portConstraint=eastwest;" value="" vertex="1">
+          <mxGeometry height="8" width="220" y="92" as="geometry" />
+        </mxCell>
+        <mxCell id="Asset_Methods" parent="Asset" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;html=1;" value="+ takeDmg(damage: int): void&#xa;+ takedefaultDmg(damage: int): void&#xa;+ getMaintenanceCost(): int" vertex="1">
+          <mxGeometry height="56" width="220" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="Noble" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;collapsible=1;marginBottom=0;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" value="Noble" vertex="1">
+          <mxGeometry height="240" width="240" x="400" y="600" as="geometry" />
+        </mxCell>
+        <mxCell id="Noble_Fields" parent="Noble" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;html=1;" value="# childCount: int&#xa;# fatherId: int&#xa;# typeCode: int&#xa;# strategyStat: int&#xa;# ambitionStat: int&#xa;# healthMeter: float&#xa;# diplomacyStat: int&#xa;+ realmIdx: int&#xa;# childrenIds: int*" vertex="1">
+          <mxGeometry height="140" width="240" y="26" as="geometry" />
+        </mxCell>
+        <mxCell id="Noble_Sep" parent="Noble" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=10;rotatable=0;labelPosition=left;points=[];portConstraint=eastwest;" value="" vertex="1">
+          <mxGeometry height="8" width="240" y="166" as="geometry" />
+        </mxCell>
+        <mxCell id="Noble_Methods" parent="Noble" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;html=1;" value="+ ~Noble()&#xa;+ getAmbitionStat(): int&#xa;+ getTypeCode(): int" vertex="1">
+          <mxGeometry height="60" width="240" y="174" as="geometry" />
+        </mxCell>
+        <mxCell id="LandedLord" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;collapsible=1;marginBottom=0;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" value="LandedLord" vertex="1">
+          <mxGeometry height="50" width="180" x="310" y="950" as="geometry" />
+        </mxCell>
+        <mxCell id="LandlessLord" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;collapsible=1;marginBottom=0;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" value="LandlessLord" vertex="1">
+          <mxGeometry height="80" width="200" x="590" y="880" as="geometry" />
+        </mxCell>
+        <mxCell id="Landless_Fields" parent="LandlessLord" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;html=1;" value="# assassinationPlotProgress: float&#xa;+ getPlotProgress(): float" vertex="1">
+          <mxGeometry height="54" width="200" y="26" as="geometry" />
+        </mxCell>
+        <mxCell id="Sage" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;collapsible=1;marginBottom=0;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" value="Sage" vertex="1">
+          <mxGeometry height="70" width="160" x="750" y="600" as="geometry" />
+        </mxCell>
+        <mxCell id="Sage_Fields" parent="Sage" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;html=1;" value="# wisdom: int&#xa;# healingPower: int" vertex="1">
+          <mxGeometry height="44" width="160" y="26" as="geometry" />
+        </mxCell>
+        <mxCell id="Assassin" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;collapsible=1;marginBottom=0;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" value="Assassin" vertex="1">
+          <mxGeometry height="70" width="160" x="950" y="600" as="geometry" />
+        </mxCell>
+        <mxCell id="Ass_Fields" parent="Assassin" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;html=1;" value="# clientIdx: int&#xa;# stealthStat: int" vertex="1">
+          <mxGeometry height="44" width="160" y="26" as="geometry" />
+        </mxCell>
+        <mxCell id="MilitaryUnit" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;collapsible=1;marginBottom=0;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" value="MilitaryUnit" vertex="1">
+          <mxGeometry height="60" width="160" x="1320" y="625" as="geometry" />
+        </mxCell>
+        <mxCell id="Mil_Fields" parent="MilitaryUnit" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;html=1;" value="# attackPower: int" vertex="1">
+          <mxGeometry height="34" width="160" y="26" as="geometry" />
+        </mxCell>
+        <mxCell id="SiegeEngine" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;collapsible=1;marginBottom=0;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" value="SiegeEngine" vertex="1">
+          <mxGeometry height="70" width="160" x="1900" y="620" as="geometry" />
+        </mxCell>
+        <mxCell id="Siege_Fields" parent="SiegeEngine" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;html=1;" value="# speed: int&#xa;# siegeDamage: int" vertex="1">
+          <mxGeometry height="44" width="160" y="26" as="geometry" />
+        </mxCell>
+        <mxCell id="Transport" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;collapsible=1;marginBottom=0;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" value="Transport" vertex="1">
+          <mxGeometry height="70" width="160" x="1700" y="620" as="geometry" />
+        </mxCell>
+        <mxCell id="Trans_Fields" parent="Transport" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;html=1;" value="# knotsSpeed: int&#xa;# troopCapacity: int" vertex="1">
+          <mxGeometry height="44" width="160" y="26" as="geometry" />
+        </mxCell>
+        <mxCell id="MeleeUnit" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;collapsible=1;marginBottom=0;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" value="MeleeUnit" vertex="1">
+          <mxGeometry height="60" width="160" x="1350" y="740" as="geometry" />
+        </mxCell>
+        <mxCell id="Melee_Fields" parent="MeleeUnit" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;html=1;" value="# servesFrontline: bool" vertex="1">
+          <mxGeometry height="34" width="160" y="26" as="geometry" />
+        </mxCell>
+        <mxCell id="MountedUnit" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;collapsible=1;marginBottom=0;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" value="MountedUnit" vertex="1">
+          <mxGeometry height="70" width="180" x="1550" y="740" as="geometry" />
+        </mxCell>
+        <mxCell id="Mount_Fields" parent="MountedUnit" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;html=1;" value="# terrainPenalty: float&#xa;# chargeMultiplier: float" vertex="1">
+          <mxGeometry height="44" width="180" y="26" as="geometry" />
+        </mxCell>
+        <mxCell id="FootSoldier" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;collapsible=1;marginBottom=0;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" value="FootSoldier" vertex="1">
+          <mxGeometry height="50" width="120" x="1200" y="880" as="geometry" />
+        </mxCell>
+        <mxCell id="Knight" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;collapsible=1;marginBottom=0;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" value="Knight" vertex="1">
+          <mxGeometry height="60" width="160" x="1360" y="880" as="geometry" />
+        </mxCell>
+        <mxCell id="Kni_Fields" parent="Knight" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;html=1;" value="# shieldBlock: bool&#xa;+ isShieldActive(): bool" vertex="1">
+          <mxGeometry height="34" width="160" y="26" as="geometry" />
+        </mxCell>
+        <mxCell id="Cavalry" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;collapsible=1;marginBottom=0;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" value="Cavalry" vertex="1">
+          <mxGeometry height="50" width="120" x="1560" y="880" as="geometry" />
+        </mxCell>
+        <mxCell id="BatteringRam" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;collapsible=1;marginBottom=0;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" value="BatteringRam" vertex="1">
+          <mxGeometry height="50" width="130" x="1860" y="750" as="geometry" />
+        </mxCell>
+        <mxCell id="Catapult" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;collapsible=1;marginBottom=0;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" value="Catapult" vertex="1">
+          <mxGeometry height="70" width="160" x="2010" y="750" as="geometry" />
+        </mxCell>
+        <mxCell id="Cat_Fields" parent="Catapult" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;html=1;" value="# aoeTargets: int&#xa;# aeDamage: int" vertex="1">
+          <mxGeometry height="44" width="160" y="26" as="geometry" />
+        </mxCell>
+        <mxCell id="WarriorLord" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;collapsible=1;marginBottom=0;html=1;fillColor=#f8cecc;strokeColor=#b85450;strokeWidth=2;" value="WarriorLord" vertex="1">
+          <mxGeometry height="60" width="220" x="870" y="1020" as="geometry" />
+        </mxCell>
+        <mxCell id="WLord_Fields" parent="WarriorLord" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;html=1;" value="+ getMaintenanceCost(): int" vertex="1">
+          <mxGeometry height="34" width="220" y="26" as="geometry" />
+        </mxCell>
+        <mxCell id="WarShip" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;collapsible=1;marginBottom=0;html=1;fillColor=#f8cecc;strokeColor=#b85450;strokeWidth=2;" value="WarShip" vertex="1">
+          <mxGeometry height="80" width="220" x="1750" y="880" as="geometry" />
+        </mxCell>
+        <mxCell id="WShip_Fields" parent="WarShip" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;html=1;" value="+ getMaintenanceCost(): int&#xa;+ takeHullDamage(dmg: int): void&#xa;+ takeWeaponDamage(dmg: int): void" vertex="1">
+          <mxGeometry height="54" width="220" y="26" as="geometry" />
+        </mxCell>
+        <mxCell id="Kingdom" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;collapsible=1;marginBottom=0;html=1;fillColor=#f5f5f5;strokeColor=#666666;" value="Kingdom" vertex="1">
+          <mxGeometry height="820" width="370" x="1050" y="1150" as="geometry" />
+        </mxCell>
+        <mxCell id="King_Fields" parent="Kingdom" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;html=1;" value="# civilWarTension: float&#xa;# realmID: int&#xa;# terrainCode: int&#xa;# countoffootsoldiers: int&#xa;# footSoldiers: FootSoldier**&#xa;# countofcatapults: int&#xa;# catapults: Catapult**&#xa;# countofwarriorlords: int&#xa;# warriorLords: WarriorLord**&#xa;# wealth: int&#xa;# currentLord: Noble*&#xa;# countofknights: int&#xa;# knights: Knight**&#xa;# countofsages: int&#xa;# sages: Sage**&#xa;# baseTaxIncome: int&#xa;# countofcavalry: int&#xa;# cavalry: Cavalry**&#xa;# defenseStat: int&#xa;# countoframs: int&#xa;# rams: BatteringRam**&#xa;# countofheirs: int&#xa;# heirIds: int*&#xa;# countofcourtiers: int&#xa;# courtiers: LandlessLord**&#xa;# countofships: int&#xa;# warShips: WarShip**" vertex="1">
+          <mxGeometry height="400" width="370" y="26" as="geometry" />
+        </mxCell>
+        <mxCell id="King_Sep" parent="Kingdom" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=10;rotatable=0;labelPosition=left;points=[];portConstraint=eastwest;" value="" vertex="1">
+          <mxGeometry height="8" width="370" y="426" as="geometry" />
+        </mxCell>
+        <mxCell id="King_Methods" parent="Kingdom" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;html=1;" value="+ Kingdom(w: int, d: int, id: int, tax: int)&#xa;+ Kingdom(parent: Kingdom&amp;, rebel: LandlessLord*, newID: int)&#xa;+ ~Kingdom()&#xa;+ calculateMaintenance(): int&#xa;+ updateStandardDuties(): void&#xa;+ performAction(): void&#xa;+ getCurrentLord(): Noble*&#xa;+ getCourtierCount(): int&#xa;+ getCourtier(i: int): LandlessLord*&#xa;+ getTension(): float&#xa;+ resetTension(): void&#xa;+ getWealth(): int&#xa;+ setWealth(w: int): void&#xa;+ getRealmID(): int&#xa;+ getTerrainCode(): int&#xa;+ setCurrentLord(n: Noble*): void&#xa;+ addFootSoldier(f: FootSoldier*): void&#xa;+ addCourtier(l: LandlessLord*): void&#xa;+ addWarriorLord(w: WarriorLord*): void&#xa;+ addKnight(k: Knight*): void&#xa;+ addCavalry(c: Cavalry*): void&#xa;+ addRam(r: BatteringRam*): void&#xa;+ addCatapult(c: Catapult*): void&#xa;+ addWarShip(w: WarShip*): void&#xa;+ addSage(s: Sage*): void" vertex="1">
+          <mxGeometry height="380" width="370" y="434" as="geometry" />
+        </mxCell>
+        <mxCell id="FrostPeaksKingdom" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;collapsible=1;marginBottom=0;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="FrostPeaksKingdom" vertex="1">
+          <mxGeometry height="90" width="200" x="550" y="1670" as="geometry" />
+        </mxCell>
+        <mxCell id="Frost_Fields" parent="FrostPeaksKingdom" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;html=1;" value="# coldAttritionModifier: int&#xa;+ applyColdWeather(): void&#xa;+ performAction(): void" vertex="1">
+          <mxGeometry height="64" width="200" y="26" as="geometry" />
+        </mxCell>
+        <mxCell id="VerdantKingdom" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;collapsible=1;marginBottom=0;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" value="VerdantKingdom" vertex="1">
+          <mxGeometry height="90" width="200" x="750" y="1750" as="geometry" />
+        </mxCell>
+        <mxCell id="Verd_Fields" parent="VerdantKingdom" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;html=1;" value="# foodSurplusBonus: int&#xa;+ applyFoodBonus(): void&#xa;+ performAction(): void" vertex="1">
+          <mxGeometry height="64" width="200" y="26" as="geometry" />
+        </mxCell>
+        <mxCell id="CoastalKingdom" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;collapsible=1;marginBottom=0;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" value="CoastalKingdom" vertex="1">
+          <mxGeometry height="90" width="200" x="1260" y="2030" as="geometry" />
+        </mxCell>
+        <mxCell id="Coast_Fields" parent="CoastalKingdom" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;html=1;" value="# navalTradeBonus: int&#xa;+ applyTradeBonus(): void&#xa;+ performAction(): void" vertex="1">
+          <mxGeometry height="64" width="200" y="26" as="geometry" />
+        </mxCell>
+        <mxCell id="TheVoidRift" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;collapsible=1;marginBottom=0;html=1;fillColor=#f8cecc;strokeColor=#b85450;" value="TheVoidRift" vertex="1">
+          <mxGeometry height="90" width="200" x="1490" y="1690" as="geometry" />
+        </mxCell>
+        <mxCell id="Void_Fields" parent="TheVoidRift" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;html=1;" value="# threatLevel: int&#xa;+ performAction(): void&#xa;+ getThreatLevel(): int" vertex="1">
+          <mxGeometry height="64" width="200" y="26" as="geometry" />
+        </mxCell>
+        <mxCell id="KLeaf1" parent="1" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fillColor=#fff2cc;strokeColor=#d6b656;align=left;spacingLeft=6;" value="ThePeaksOfFrost : FrostPeaksKingdom&#xa;TheSkyCitadel : VerdantKingdom&#xa;TheVerdantExpanse : VerdantKingdom&#xa;TheCrimsonSands : VerdantKingdom&#xa;TheAzureRiverlands : VerdantKingdom&#xa;TheSunlandEmpire : CoastalKingdom&#xa;TheCorsairIsles : CoastalKingdom&#xa;TheTempestCoast : CoastalKingdom&#xa;TheImperialSeat : CoastalKingdom" vertex="1">
+          <mxGeometry height="150" width="280" x="640" y="1960" as="geometry" />
+        </mxCell>
+        <mxCell id="KLEdge1" edge="1" parent="1" source="KLeaf1" style="edgeStyle=orthogonalEdgeStyle;dashed=1;endArrow=block;endFill=0;" target="FrostPeaksKingdom">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="KLEdge2" edge="1" parent="1" source="KLeaf1" style="edgeStyle=orthogonalEdgeStyle;dashed=1;endArrow=block;endFill=0;" target="VerdantKingdom">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="KLEdge3" edge="1" parent="1" source="KLeaf1" style="edgeStyle=orthogonalEdgeStyle;dashed=1;endArrow=block;endFill=0;" target="CoastalKingdom">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="FreeFunc" parent="1" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fillColor=#f5f5f5;strokeColor=#666666;align=left;spacingLeft=6;" value="Free function:&#xa;terminateLord(n: Noble*): void" vertex="1">
+          <mxGeometry height="50" width="200" x="310" y="1000" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" edge="1" parent="1" source="Per_Methods" style="edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=block;endFill=0;endSize=12;exitX=1;exitY=0.25;exitDx=0;exitDy=0;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1220" y="400" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e2" edge="1" parent="1" source="Asset" style="edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=block;endFill=0;endSize=12;" target="Entity">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" edge="1" parent="1" source="Noble" style="edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=block;endFill=0;endSize=12;" target="Person">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4" edge="1" parent="1" source="Sage" style="edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=block;endFill=0;endSize=12;" target="Person">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="830" y="575" />
+              <mxPoint x="890" y="575" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e5" edge="1" parent="1" source="Assassin" style="edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=block;endFill=0;endSize=12;" target="Person">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1030" y="575" />
+              <mxPoint x="990" y="575" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e6" edge="1" parent="1" source="LandedLord" style="edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=block;endFill=0;endSize=12;" target="Noble">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="440" y="870" />
+              <mxPoint x="440" y="870" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e7" edge="1" parent="1" source="LandlessLord" style="edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=block;endFill=0;endSize=12;" target="Noble">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="540" y="830" />
+              <mxPoint x="520" y="830" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e8" edge="1" parent="1" source="MilitaryUnit" style="edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=block;endFill=0;endSize=12;entryX=0;entryY=0.75;entryDx=0;entryDy=0;" target="Asset_Fields">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e9" edge="1" parent="1" source="SiegeEngine" style="edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=block;endFill=0;endSize=12;" target="Asset">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1980" y="600" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e12" edge="1" parent="1" source="Transport" style="edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=block;endFill=0;endSize=12;entryX=0.909;entryY=1;entryDx=0;entryDy=0;entryPerimeter=0;" target="Asset_Methods">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e10" edge="1" parent="1" source="MeleeUnit" style="edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=block;endFill=0;endSize=12;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1430" y="700" />
+              <mxPoint x="1480" y="700" />
+              <mxPoint x="1480" y="720" />
+              <mxPoint x="1410" y="720" />
+            </Array>
+            <mxPoint x="1410" y="690" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e11" edge="1" parent="1" source="MountedUnit" style="edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=block;endFill=0;endSize=12;" target="MilitaryUnit">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1640" y="710" />
+              <mxPoint x="1620" y="710" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e13" edge="1" parent="1" source="FootSoldier" style="edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=block;endFill=0;endSize=12;" target="MeleeUnit">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1330" y="905" />
+              <mxPoint x="1330" y="770" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e14" edge="1" parent="1" source="Knight" style="edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=block;endFill=0;endSize=12;" target="MeleeUnit">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1440" y="840" />
+              <mxPoint x="1450" y="840" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e15" edge="1" parent="1" source="Cavalry" style="edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=block;endFill=0;endSize=12;" target="MountedUnit">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e16" edge="1" parent="1" source="BatteringRam" style="edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=block;endFill=0;endSize=12;entryX=0.316;entryY=1.03;entryDx=0;entryDy=0;entryPerimeter=0;" target="Siege_Fields">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e17" edge="1" parent="1" source="Catapult" style="edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=block;endFill=0;endSize=12;entryX=0.872;entryY=1.01;entryDx=0;entryDy=0;entryPerimeter=0;" target="Siege_Fields">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="m1" edge="1" parent="1" source="WLord_Fields" style="edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=block;endFill=0;endSize=12;strokeColor=#b85450;strokeWidth=3;exitX=0;exitY=0.25;exitDx=0;exitDy=0;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="739.96" y="1049.9999999999998" as="sourcePoint" />
+            <mxPoint x="560" y="840" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m2" edge="1" parent="1" source="WarriorLord" style="edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=block;endFill=0;endSize=12;strokeColor=#b85450;strokeWidth=3;" target="Knight">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="m3" edge="1" parent="1" source="WarShip" style="edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=block;endFill=0;endSize=12;strokeColor=#b85450;strokeWidth=3;" target="Transport">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="m4" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=block;endFill=0;endSize=12;strokeColor=#b85450;strokeWidth=3;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1880" y="879.9999999999998" as="sourcePoint" />
+            <mxPoint x="1999.9999999999995" y="690" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="k1" edge="1" parent="1" source="FrostPeaksKingdom" style="edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=block;endFill=0;endSize=12;" target="Kingdom">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="k2" edge="1" parent="1" source="VerdantKingdom" style="edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=block;endFill=0;endSize=12;" target="Kingdom">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="k3" edge="1" parent="1" source="CoastalKingdom" style="edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=block;endFill=0;endSize=12;" target="Kingdom">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="k4" edge="1" parent="1" source="TheVoidRift" style="edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=block;endFill=0;endSize=12;" target="Kingdom">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="comp1" edge="1" parent="1" source="Kingdom" style="edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=diamond;endFill=1;strokeWidth=2;" target="Aethelgard" value="1..*">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="70" y="1180" />
+              <mxPoint x="70" y="490" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="comp2" edge="1" parent="1" source="InevitableFate" style="edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=diamond;endFill=1;strokeWidth=2;" target="Aethelgard" value="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="agg1" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=diamond;endFill=0;strokeWidth=1;entryX=0.8;entryY=0.002;entryDx=0;entryDy=0;entryPerimeter=0;" target="Kingdom" value="contains units">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1540" y="1120" />
+              <mxPoint x="1346" y="1120" />
+            </Array>
+            <mxPoint x="1539.9999999999995" y="570" as="sourcePoint" />
+            <mxPoint x="1214.9999999999998" y="1150" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="agg2" edge="1" parent="1" source="Noble" style="edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=diamond;endFill=0;strokeWidth=1;entryX=0.368;entryY=0.002;entryDx=0;entryDy=0;entryPerimeter=0;" target="Kingdom" value="ruled by">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="520" y="1120" />
+              <mxPoint x="1186" y="1120" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="agg3" edge="1" parent="1" source="Sage" style="edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=diamond;endFill=0;strokeWidth=1;" target="Kingdom" value="has sages">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="830" y="1100" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="agg4" edge="1" parent="1" source="LandlessLord" style="edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=diamond;endFill=0;strokeWidth=1;" target="Kingdom" value="has courtiers">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="620" y="1100" />
+              <mxPoint x="1235" y="1100" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="dep2" edge="1" parent="1" source="Aethelgard" style="edgeStyle=orthogonalEdgeStyle;dashed=1;endArrow=open;endSize=12;" target="ScenarioLoader" value="uses">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="250" y="60" />
+              <mxPoint x="1360" y="60" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="dep3" edge="1" parent="1" source="WarHours" style="edgeStyle=orthogonalEdgeStyle;dashed=1;endArrow=open;endSize=12;" target="Kingdom" value="simulates battle">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1010" y="430" />
+              <mxPoint x="1270" y="430" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

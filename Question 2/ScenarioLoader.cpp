@@ -1,6 +1,6 @@
 #include "ScenarioLoader.h"
 #include "Aethelgard.h"
-#include "string.h"
+#include "custom_string.h"
 #include <iostream>
 #include <fstream>
 

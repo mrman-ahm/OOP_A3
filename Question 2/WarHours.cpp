@@ -122,16 +122,17 @@ void WarHours::killTheUnits(Kingdom* target, int incomingDamage) {
         WarriorLord* unit = target->warriorLords[target->countofwarriorlords - 1];
         if (unit) {
             int effectiveDmg = casualtyPoints;
-            if (((Knight*)unit)->isShieldActive()) {
+            Knight* kUnit = (Knight*)unit;
+            if (kUnit->isShieldActive()) {
                 effectiveDmg -= 2; if (effectiveDmg < 0) effectiveDmg = 0;
             }
 
-            if (effectiveDmg >= ((Knight*)unit)->hp) {
-                casualtyPoints -= ((Knight*)unit)->hp;
+            if (effectiveDmg >= kUnit->hp) {
+                casualtyPoints -= kUnit->hp;
                 target->warriorLords[target->countofwarriorlords - 1] = nullptr;
                 target->countofwarriorlords--;
             } else {
-                ((Knight*)unit)->hp -= effectiveDmg;
+                kUnit->hp -= effectiveDmg;
                 casualtyPoints = 0;
             }
         } else { target->countofwarriorlords--; }
